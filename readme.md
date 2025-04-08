@@ -2,11 +2,11 @@
 
   
 
-"r" = the dot
+"r" = dot
 
-"a" = the dash
+"a" = dash
 
-"n" = the dot but when you're writing numbers
+"n" = dot but when you're writing numbers
 
   
 
