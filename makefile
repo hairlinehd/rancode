@@ -1,2 +1,5 @@
 main:
-	gcc main.c -o rancode
+	gcc main.c -o ranenc
+
+dec:
+	gcc decode.c -o randec

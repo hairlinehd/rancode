@@ -64,7 +64,8 @@ int main() {
     char input[256];
     
     printf("rancode translator\n");
-    printf("enter text: ");
+    printf("enter text:\n");
+    printf("> ");
 
     if (fgets(input, sizeof(input), stdin)) {
         // remove line breaks
