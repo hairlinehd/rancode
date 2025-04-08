@@ -3,7 +3,7 @@
 #include <ctype.h>
 
 // rancode table
-const char *morse_code[] = {
+const char *rancode[] = {
     "ra", // a
     "arrr", // b
     "arar", // c
@@ -47,10 +47,10 @@ void input2ran(const char *text) {
     for (size_t i = 0; text[i] != '\0'; i++) {
         char c = toupper(text[i]);
         if (c >= 'A' && c <= 'Z') {
-            printf("%s ", morse_code[c - 'A']);
+            printf("%s ", rancode[c - 'A']);
         } 
         else if (c >= '0' && c <= '9') {
-            printf("%s ", morse_code[c - '0' + 26]);
+            printf("%s ", rancode[c - '0' + 26]);
         } 
         else if (c == ' ') {
             printf("ts "); //ts to seperate words
