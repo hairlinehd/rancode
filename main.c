@@ -74,7 +74,8 @@ int main() {
         
         printf("rancode: ");
         input2ran(input);
-    } else {
+    } 
+    else {
         printf("error reading input\n");
     }
     
