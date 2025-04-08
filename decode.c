@@ -3,118 +3,112 @@
 #include <ctype.h>
 
 // struct to hold mappings
-struct MorseCode {
+struct ranCode {
     char character;
     const char *code;
 };
 
 // lookup table
-const struct MorseCode morseTable[] = {
-    {'A', ".-"},
-    {'B', "-..."}, 
-    {'C', "-.-."}, 
-    {'D', "-.."}, 
-    {'E', "."},
-    {'F', "..-."}, 
-    {'G', "--."}, 
-    {'H', "...."}, 
-    {'I', ".."}, 
-    {'J', ".---"},
-    {'K', "-.-"}, 
-    {'L', ".-.."}, 
-    {'M', "--"}, 
-    {'N', "-."}, 
-    {'O', "---"},
-    {'P', ".--."}, 
-    {'Q', "--.-"}, 
-    {'R', ".-."}, 
-    {'S', "..."}, 
-    {'T', "-"},
-    {'U', "..-"}, 
-    {'V', "...-"}, 
-    {'W', ".--"}, 
-    {'X', "-..-"}, 
-    {'Y', "-.--"},
-    {'Z', "--.."},
-    {'0', "-----"}, 
-    {'1', ".----"}, 
-    {'2', "..---"}, 
-    {'3', "...--"},
-    {'4', "....-"}, 
-    {'5', "....."}, 
-    {'6', "-...."}, 
-    {'7', "--..."}, 
-    {'8', "---.."},
-    {'9', "----."},
+const struct ranCode ranTable[] = {
+    {'A', "ra"},
+    {'B', "arrr"}, 
+    {'C', "arar"}, 
+    {'D', "arr"}, 
+    {'E', "r"},
+    {'F', "rrar"}, 
+    {'G', "aar"}, 
+    {'H', "rrrr"}, 
+    {'I', "rr"}, 
+    {'J', "raaa"},
+    {'K', "ara"}, 
+    {'L', "rarr"}, 
+    {'M', "aa"}, 
+    {'N', "ar"}, 
+    {'O', "aaa"},
+    {'P', "raar"}, 
+    {'Q', "aara"}, 
+    {'R', "rar"}, 
+    {'S', "rrr"}, 
+    {'T', "a"},
+    {'U', "rra"}, 
+    {'V', "aaar"}, 
+    {'W', "raa"}, 
+    {'X', "arra"}, 
+    {'Y', "araa"},
+    {'Z', "aarr"},
+    {'0', "aaaaa"}, 
+    {'1', "naaaa"}, 
+    {'2', "nnaaa"}, 
+    {'3', "nnnaa"},
+    {'4', "aaaan"}, 
+    {'5', "nnnnn"}, 
+    {'6', "annnn"}, 
+    {'7', "aannn"}, 
+    {'8', "aaann"},
+    {'9', "aaaan"},
     {' ', "ts"}
 };
 
-const int morseTableSize = sizeof(morseTable) / sizeof(morseTable[0]);
+const int ranTableSize = sizeof(ranTable) / sizeof(ranTable[0]);
 
 // find charactes from rancode
-char morseToChar(const char *morse) {
-    for (int i = 0; i < morseTableSize; i++) {
-        if (strcmp(morse, morseTable[i].code) == 0) {
-            return morseTable[i].character;
+char ranToChar(const char *ran) {
+    for (int i = 0; i < ranTableSize; i++) {
+        if (strcmp(ran, ranTable[i].code) == 0) {
+            return ranTable[i].character;
         }
     }
     return '?'; // return ? on unknown
 }
 
 // translate rancode
-void ran2words(const char *morseInput, char *textOutput) {
-    char morseChar[10]; // Temporary buffer for each Morse character
-    int morseIndex = 0;
+void ran2words(const char *ranInput, char *textOutput) {
+    char ranChar[10]; // Temporary buffer for each ran character
+    int ranIndex = 0;
     int outputIndex = 0;
     
-    for (int i = 0; morseInput[i] != '\0'; i++) {
-        if (morseInput[i] == ' ' || morseInput[i] == '/') {
-            // End of a Morse character
-            if (morseIndex > 0) {
-                morseChar[morseIndex] = '\0';
-                textOutput[outputIndex++] = morseToChar(morseChar);
-                morseIndex = 0;
+    for (int i = 0; ranInput[i] != '\0'; i++) {
+        if (ranInput[i] == ' ' || ranInput[i] == '/') {
+            // end of a character
+            if (ranIndex > 0) {
+                ranChar[ranIndex] = '\0';
+                textOutput[outputIndex++] = ranToChar(ranChar);
+                ranIndex = 0;
             }
             
-            // Handle word space
-            if (morseInput[i] == '/') {
+            // ts
+            if (ranInput[i] == 'ts') {
                 textOutput[outputIndex++] = ' ';
             }
         } else {
-            // Build the Morse character
-            if (morseIndex < 9) {
-                morseChar[morseIndex++] = morseInput[i];
+            // build the ran!!!
+            if (ranIndex < 9) {
+                ranChar[ranIndex++] = ranInput[i];
             }
         }
     }
     
-    // Handle the last Morse character if there's no trailing space
-    if (morseIndex > 0) {
-        morseChar[morseIndex] = '\0';
-        textOutput[outputIndex++] = morseToChar(morseChar);
+    if (ranIndex > 0) {
+        ranChar[ranIndex] = '\0';
+        textOutput[outputIndex++] = ranToChar(ranChar);
     }
     
     textOutput[outputIndex] = '\0';
 }
 
 int main() {
-    char morseInput[500];
+    char ranInput[500];
     char textOutput[200];
     
     printf("rancode to words translator\n");
     printf("rancode (use 'r' for dot, 'a' for dash, space to separate letters, and 'ts' to separate words)\n");
     printf("> ");
     
-    // Read input
-    fgets(morseInput, sizeof(morseInput), stdin);
+    fgets(ranInput, sizeof(ranInput), stdin);
+    ranInput[strcspn(ranInput, "\n")] = '\0';
+    ran2words(ranInput, textOutput);
     
-    // Remove newline character
-    morseInput[strcspn(morseInput, "\n")] = '\0';
-    
-    // Translate Morse code
-    ran2words(morseInput, textOutput);
-    
-    printf("\nout:\n%s\n", textOutput);
+    printf("\nout: %s\n", textOutput);
     
     return 0;
 }
