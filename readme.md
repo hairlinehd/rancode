@@ -1,10 +1,10 @@
-to make rancode, you split up "ran" into three parts
+# to make rancode, you split up "ran" into three parts
 
 "r" = the dot
 "a" = the dash 
 "n" = the dot but when you're writing numbers
 
-then, its basically morse code but with a split up "ran"
+# then, its basically morse code but with a split up "ran"
 
 A = "ra"
 B = "arrr"
