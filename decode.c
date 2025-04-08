@@ -35,7 +35,7 @@ const struct MorseCode morseTable[] = {
     {'W', ".--"}, 
     {'X', "-..-"}, 
     {'Y', "-.--"},
-    {'Z', "--.."}, 
+    {'Z', "--.."},
     {'0', "-----"}, 
     {'1', ".----"}, 
     {'2', "..---"}, 
@@ -45,7 +45,8 @@ const struct MorseCode morseTable[] = {
     {'6', "-...."}, 
     {'7', "--..."}, 
     {'8', "---.."},
-    {'9', "----."}
+    {'9', "----."},
+    {' ', "ts"}
 };
 
 const int morseTableSize = sizeof(morseTable) / sizeof(morseTable[0]);
@@ -100,8 +101,8 @@ int main() {
     char morseInput[500];
     char textOutput[200];
     
-    printf("Morse Code Translator\n");
-    printf("Enter Morse code (use '.' for dot, '-' for dash, ' ' to separate letters, '/' to separate words):\n");
+    printf("rancode to words translator\n");
+    printf("rancode (use 'r' for dot, 'a' for dash, space to separate letters, and 'ts' to separate words)\n");
     printf("> ");
     
     // Read input
