@@ -40,7 +40,7 @@ const struct ranCode ranTable[] = {
     {'1', "naaaa"}, 
     {'2', "nnaaa"}, 
     {'3', "nnnaa"},
-    {'4', "aaaan"}, 
+    {'4', "nnnna"}, 
     {'5', "nnnnn"}, 
     {'6', "annnn"}, 
     {'7', "aannn"}, 
@@ -63,7 +63,7 @@ char ranToChar(const char *ran) {
 
 // translate rancode
 void ran2words(const char *ranInput, char *textOutput) {
-    char ranChar[10]; // Temporary buffer for each ran character
+    char ranChar[10]; 
     int ranIndex = 0;
     int outputIndex = 0;
     
@@ -101,14 +101,14 @@ int main() {
     char textOutput[200];
     
     printf("rancode to words translator\n");
-    printf("rancode (use 'r' for dot, 'a' for dash, space to separate letters, and 'ts' to separate words)\n");
+    printf("use 'r' for dot, 'a' for dash, space to separate letters, and 'ts' to separate words\n");
     printf("> ");
     
     fgets(ranInput, sizeof(ranInput), stdin);
     ranInput[strcspn(ranInput, "\n")] = '\0';
     ran2words(ranInput, textOutput);
     
-    printf("\nout: %s\n", textOutput);
+    printf("%s\n",textOutput);
     
     return 0;
 }

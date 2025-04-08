@@ -34,7 +34,7 @@ const char *morse_code[] = {
     "naaaa", // 1
     "nnaaa", // 2
     "nnnaa", // 3
-    "aaaan", // 4
+    "nnnna", // 4
     "nnnnn", // 5
     "annnn", // 6
     "aannn", // 7
