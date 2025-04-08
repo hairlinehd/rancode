@@ -48,13 +48,15 @@ void input2ran(const char *text) {
         char c = toupper(text[i]);
         if (c >= 'A' && c <= 'Z') {
             printf("%s ", morse_code[c - 'A']);
-        } else if (c >= '0' && c <= '9') {
+        } 
+        else if (c >= '0' && c <= '9') {
             printf("%s ", morse_code[c - '0' + 26]);
-        } else if (c == ' ') {
+        } 
+        else if (c == ' ') {
             printf("ts "); //ts to seperate words
-        } else {
-            // dont worry about unsupported characters
-            continue;
+        } 
+        else {
+            continue; // dont worry about unsupported characters
         }
     }
     printf("\n");
