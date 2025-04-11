@@ -129,7 +129,7 @@ int main() {
     char ranInput[500];
     char textOutput[200];
 
-    printf("rancode to words translator\n");
+    printf("rancode decoder\n");
     printf("use 'r' for dot ('n' when writing numbers), 'a' for dash, space to separate letters, and 'ts' to separate words\n");
     printf("> ");
     

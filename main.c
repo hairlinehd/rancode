@@ -96,7 +96,7 @@ void input2ran(const char *text) {
 int main() {    
     char input[256];
     
-    printf("input to rancode translator\n");
+    printf("rancode encoder\n");
     printf("> ");
 
     if (fgets(input, sizeof(input), stdin)) {
