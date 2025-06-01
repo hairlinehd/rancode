@@ -1,1 +1,1 @@
-# read `specification` if you want to know how to rancode works
+# read `specification` please gang
